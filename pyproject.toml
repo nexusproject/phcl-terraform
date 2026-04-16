@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phcl-terraform"
+version = "0.1.1"
+description = "Terraform-native authoring layer for PHCL."
+authors = [
+    { name = "Dmitry Sergeev", email = "realnexusway@gmail.com" }
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "phcl>=0.1.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["phcl.terraform*"]
+namespaces = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
