@@ -1,9 +1,11 @@
 from phcl.core.expression import Reference
 from phcl.terraform import Data, Locals, Module, Output, Provider, Resource
-from phcl.terraform import Terraform, Variable, each, local, module, var
+from phcl.terraform import Terraform, TerraformPHCL, Variable, each, local, module, var
 
 
 def test_public_api_exports():
+    assert TerraformPHCL.__name__ == "TerraformPHCL"
+    assert TerraformPHCL.extension == "tf"
     assert Resource.__name__ == "Resource"
     assert Data.__name__ == "Data"
     assert Variable.__name__ == "Variable"
