@@ -13,10 +13,8 @@ For the core model, rendering, CLI behavior, and general PHCL documentation:
 
 ## Installation
 
-The intended install surface is:
-
-```python
-phcl["terraform"]
+```bash
+pip install 'phcl[terraform]'
 ```
 
 ## Example
