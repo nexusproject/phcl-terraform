@@ -1,0 +1,33 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: install uv
+        run: pip install uv
+
+      - name: install deps
+        run: uv sync || true
+
+      - name: install test deps
+        run: uv pip install pytest-cov
+
+      - name: run tests
+        run: uv run pytest --cov=phcl.terraform --cov-report=xml
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
