@@ -14,7 +14,7 @@ license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "phcl>=0.1.0",
+    "phcl>=0.2.0",
 ]
 
 [dependency-groups]
