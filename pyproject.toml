@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "phcl-terraform"
-version = "0.1.3"
+version = "0.1.4"
 description = "Terraform-native authoring layer for PHCL."
 authors = [
     { name = "Dmitry Sergeev", email = "realnexusway@gmail.com" }
@@ -14,7 +14,7 @@ license-files = ["LICENSE"]
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-    "phcl>=0.2.0",
+    "phcl>=0.2.2",
 ]
 
 [dependency-groups]

@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.4
+
+- Aligned the Terraform dialect with `phcl` `0.2.2`
+- Fixed rendering for unlabeled `terraform {}` and `locals {}` blocks
+- Fixed rendering for single-label `provider "aws" {}` blocks
+- Added dialect coverage for Terraform auto-label behavior
+
 ## v0.1.3
 
 - Removed Terraform-specific `for_each` iterable auto-normalization
