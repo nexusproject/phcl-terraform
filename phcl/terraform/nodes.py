@@ -6,10 +6,8 @@ preserving the declarative class-based style of the base DSL.
 """
 
 from phcl.core import Node
-from phcl.syntax import abstract
 
 
-@abstract
 class Resource(Node):
     """
     Terraform resource block.
@@ -28,7 +26,6 @@ class Resource(Node):
         return f"{labels[0]}.{logical_name}"
 
 
-@abstract
 class Data(Node):
     """
     Terraform data source block.
@@ -47,7 +44,6 @@ class Data(Node):
         return f"data.{labels[0]}.{logical_name}"
 
 
-@abstract
 class Variable(Node):
     """
     Terraform variable block.
@@ -63,7 +59,6 @@ class Variable(Node):
         return f"var.{cls._phcl_logical_name()}"
 
 
-@abstract
 class Output(Node):
     """
     Terraform output block.
@@ -78,7 +73,6 @@ class Output(Node):
         return cls._phcl_logical_name()
 
 
-@abstract
 class Module(Node):
     """
     Terraform module block.
@@ -93,7 +87,6 @@ class Module(Node):
         return f"module.{cls._phcl_logical_name()}"
 
 
-@abstract
 class Provider(Node):
     """
     Terraform provider block.
@@ -104,7 +97,6 @@ class Provider(Node):
     """
 
 
-@abstract
 class Locals(Node):
     """
     Terraform locals block.
@@ -115,7 +107,6 @@ class Locals(Node):
     """
 
 
-@abstract
 class Terraform(Node):
     """
     Terraform settings block.
