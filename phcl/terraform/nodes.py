@@ -96,6 +96,8 @@ class Provider(Node):
             region = "us-east-1"
     """
 
+    _phcl_auto_label = False
+
 
 class Locals(Node):
     """
@@ -106,6 +108,8 @@ class Locals(Node):
             project = "demo"
     """
 
+    _phcl_auto_label = False
+
 
 class Terraform(Node):
     """
@@ -115,3 +119,5 @@ class Terraform(Node):
         class Settings(Terraform):
             required_version = ">= 1.8.0"
     """
+
+    _phcl_auto_label = False
