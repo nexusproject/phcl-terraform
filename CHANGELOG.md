@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.3
+
+- Removed Terraform-specific `for_each` iterable auto-normalization
+- Removed redundant `@abstract` decorators from Terraform root declaration types
+
 ## v0.1.2
 
 - Added PHCL `0.2.0` compatibility fixes
