@@ -1,6 +1,7 @@
 import pytest
 
-from phcl.terraform import Data, Module, Resource, Variable
+from phcl.render.hcl2 import build_hcl
+from phcl.terraform import Data, Locals, Module, Provider, Resource, Terraform, Variable
 
 
 def test_resource_reference_base():
@@ -79,3 +80,37 @@ def test_module_for_each_leaves_iterable_untouched():
         for_each = values
 
     assert Child.for_each == values
+
+
+
+def test_terraform_block_does_not_auto_label_from_class_name():
+    class Settings(Terraform):
+        required_version = ">= 1.8.0"
+
+    assert build_hcl([Settings]) == (
+        "terraform {\n"
+        "  required_version = \">= 1.8.0\"\n"
+        "}\n"
+    )
+
+
+def test_locals_block_does_not_auto_label_from_class_name():
+    class Env(Locals):
+        region = "us-east-1"
+
+    assert build_hcl([Env]) == (
+        "locals {\n"
+        "  region = \"us-east-1\"\n"
+        "}\n"
+    )
+
+
+def test_provider_block_keeps_explicit_label_without_class_name_label():
+    class Aws(Provider["aws"]):
+        region = "us-east-1"
+
+    assert build_hcl([Aws]) == (
+        "provider \"aws\" {\n"
+        "  region = \"us-east-1\"\n"
+        "}\n"
+    )
