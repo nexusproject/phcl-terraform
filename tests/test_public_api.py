@@ -15,10 +15,10 @@ def test_public_api_exports():
     assert Locals.__name__ == "Locals"
     assert Terraform.__name__ == "Terraform"
     assert isinstance(each, Reference)
-    assert each.name == "each"
+    assert each.source == "each"
     assert isinstance(var, Reference)
-    assert var.name == "var"
+    assert var.source == "var"
     assert isinstance(local, Reference)
-    assert local.name == "local"
+    assert local.source == "local"
     assert isinstance(module, Reference)
-    assert module.name == "module"
+    assert module.source == "module"
