@@ -1,4 +1,4 @@
-from phcl.core.expression import Reference
+from phcl.core import Reference
 from phcl.terraform import Data, Locals, Module, Output, Provider, Resource
 from phcl.terraform import Terraform, TerraformPHCL, Variable, each, local, module, var
 

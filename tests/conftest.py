@@ -15,9 +15,7 @@ phcl_module = types.ModuleType("phcl")
 phcl_module.__path__ = [str(phcl_root)]
 
 core_module = types.ModuleType("phcl.core")
-decorators_module = types.ModuleType("phcl.core.decorators")
-expression_module = types.ModuleType("phcl.core.expression")
-nodes_module = types.ModuleType("phcl.core.nodes")
+syntax_module = types.ModuleType("phcl.syntax")
 
 
 def abstract(cls):
@@ -61,18 +59,19 @@ class Node:
         return _to_snake_case(cls.__name__)
 
 
-decorators_module.abstract = abstract
-expression_module.Reference = Reference
-nodes_module.Node = Node
+class Declarative:
+    extension = None
 
-core_module.decorators = decorators_module
-core_module.expression = expression_module
-core_module.nodes = nodes_module
+
+core_module.Declarative = Declarative
+core_module.Reference = Reference
+core_module.Node = Node
+
+syntax_module.abstract = abstract
 
 phcl_module.core = core_module
+phcl_module.syntax = syntax_module
 
 sys.modules["phcl"] = phcl_module
 sys.modules["phcl.core"] = core_module
-sys.modules["phcl.core.decorators"] = decorators_module
-sys.modules["phcl.core.expression"] = expression_module
-sys.modules["phcl.core.nodes"] = nodes_module
+sys.modules["phcl.syntax"] = syntax_module

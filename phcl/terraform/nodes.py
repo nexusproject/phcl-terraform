@@ -7,8 +7,8 @@ preserving the declarative class-based style of the base DSL.
 
 from collections.abc import Iterable, Mapping
 
-from phcl.core.decorators import abstract
-from phcl.core.nodes import Node
+from phcl.core import Node
+from phcl.syntax import abstract
 
 
 @abstract

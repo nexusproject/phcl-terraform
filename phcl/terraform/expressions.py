@@ -1,4 +1,4 @@
-from phcl.core.expression import Reference
+from phcl.core import Reference
 
 
 each = Reference("each")
