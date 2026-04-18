@@ -5,8 +5,6 @@ These classes adapt the generic PHCL core model to Terraform block kinds while
 preserving the declarative class-based style of the base DSL.
 """
 
-from collections.abc import Iterable, Mapping
-
 from phcl.core import Node
 from phcl.syntax import abstract
 
@@ -20,14 +18,6 @@ class Resource(Node):
         class Web(Resource["aws_instance"]):
             ...
     """
-
-    def _phcl_normalize_attr(self, name, value):
-        if name == "for_each":
-            if isinstance(value, Mapping):
-                return value
-            if isinstance(value, Iterable) and not isinstance(value, (str, bytes)):
-                return {f"item_{index}": item for index, item in enumerate(value)}
-        return super()._phcl_normalize_attr(name, value)
 
     @classmethod
     def _phcl_reference_base(cls) -> str:
@@ -97,14 +87,6 @@ class Module(Node):
         class Vpc(Module):
             source = "./modules/vpc"
     """
-
-    def _phcl_normalize_attr(self, name, value):
-        if name == "for_each":
-            if isinstance(value, Mapping):
-                return value
-            if isinstance(value, Iterable) and not isinstance(value, (str, bytes)):
-                return {f"item_{index}": item for index, item in enumerate(value)}
-        return super()._phcl_normalize_attr(name, value)
 
     @classmethod
     def _phcl_reference_base(cls) -> str:

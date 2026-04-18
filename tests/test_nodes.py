@@ -56,16 +56,13 @@ def test_resource_for_each_keeps_mapping():
     assert Fleet.for_each == mapping
 
 
-def test_resource_for_each_normalizes_iterable():
+def test_resource_for_each_leaves_iterable_untouched():
     values = [{"name": "web-a"}, {"name": "web-b"}]
 
     class Fleet(Resource["aws_instance"]):
         for_each = values
 
-    assert Fleet.for_each == {
-        "item_0": {"name": "web-a"},
-        "item_1": {"name": "web-b"},
-    }
+    assert Fleet.for_each == values
 
 
 def test_resource_for_each_leaves_strings_untouched():
@@ -75,11 +72,10 @@ def test_resource_for_each_leaves_strings_untouched():
     assert Fleet.for_each == "literal"
 
 
-def test_module_for_each_normalizes_iterable():
-    class Child(Module):
-        for_each = ["a", "b"]
+def test_module_for_each_leaves_iterable_untouched():
+    values = ["a", "b"]
 
-    assert Child.for_each == {
-        "item_0": "a",
-        "item_1": "b",
-    }
+    class Child(Module):
+        for_each = values
+
+    assert Child.for_each == values
