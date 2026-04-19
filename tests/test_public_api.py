@@ -1,6 +1,7 @@
-from phcl.core import Reference
+from phcl.core import Expression, Reference
 from phcl.terraform import Data, Locals, Module, Output, Provider, Resource
-from phcl.terraform import Terraform, TerraformPHCL, Variable, each, local, module, var
+from phcl.terraform import Terraform, TerraformPHCL, Variable
+from phcl.terraform import decode_tfvars, each, encode_expr, encode_tfvars, local, module, var
 
 
 def test_public_api_exports():
@@ -22,3 +23,18 @@ def test_public_api_exports():
     assert local.source == "local"
     assert isinstance(module, Reference)
     assert module.source == "module"
+
+
+def test_terraform_specific_functions_render_provider_calls():
+    encoded_tfvars = encode_tfvars({"example": "Hello!"})
+    decoded_tfvars = decode_tfvars('example = "Hello!"')
+    encoded_expr = encode_expr({"enabled": True})
+
+    assert isinstance(encoded_tfvars, Expression)
+    assert encoded_tfvars.source == 'provider::terraform::encode_tfvars({example = "Hello!"})'
+
+    assert isinstance(decoded_tfvars, Expression)
+    assert decoded_tfvars.source == 'provider::terraform::decode_tfvars("example = \\"Hello!\\"")'
+
+    assert isinstance(encoded_expr, Expression)
+    assert encoded_expr.source == 'provider::terraform::encode_expr({enabled = true})'
