@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.1.5
+
+Terraform dialect surface is now stable enough for real use.
+
+- Added support for Terraform-specific functions: `encode_tfvars`, `decode_tfvars`, and `encode_expr`
+- Added a minimal example project for running the Terraform-specific function helpers end-to-end
+- Included minor fixes and cleanup
+
 ## v0.1.4
 
 - Aligned the Terraform dialect with `phcl` `0.2.2`
