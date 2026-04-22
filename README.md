@@ -1,12 +1,12 @@
 <h1>
   <img src="https://raw.githubusercontent.com/nexusproject/phcl-terraform/main/assets/phcl-logo-terraform-outline.svg" width="70" align="absmiddle"
        style="margin-right: 8px;">
-  PHCL-TERRAFORM
+  PHCL-Terraform
   <img src="https://codecov.io/gh/nexusproject/phcl-terraform/branch/main/graph/badge.svg"
        align="right">
 </h1>
 
-PHCL-TERRAFORM is the Terraform dialect layer for PHCL.
+PHCL-Terraform is the Terraform dialect layer for PHCL.
 
 For the core model, rendering, CLI behavior, and general PHCL documentation:
 
